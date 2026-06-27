@@ -7,13 +7,13 @@ Use this before publishing the first public repository or npm package.
 - [x] Choose the public repository URL:
       `https://github.com/Yusaku01/stampy`.
 - [x] Add the repository URL to `packages/core/package.json`.
-- [ ] Confirm `README.md`, `LICENSE`, `CONTRIBUTING.md`, and `SECURITY.md` render
-      correctly on GitHub.
+- [x] Confirm `README.md`, `LICENSE`, `CONTRIBUTING.md`, and `SECURITY.md` are
+      readable on GitHub. Confirmed through the GitHub API on 2026-06-27.
 - [x] Add the GitHub repository description and topics.
 - [x] Enable branch protection for `main`.
       Required status check: `Test, typecheck, build, and pack`.
 - [x] Confirm the GitHub Actions CI workflow passes on the default branch.
-      Latest confirmed run: `28290637089`, success on 2026-06-27.
+      Latest confirmed run: `28291209393`, success on 2026-06-27.
 
 ## Package
 
