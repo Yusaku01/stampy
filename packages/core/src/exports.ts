@@ -1,4 +1,4 @@
-import { renderStampSvg, type StampDesign } from "./stamp-design";
+import { renderStampSvg, type StampDesign } from "./stamp-design.js";
 
 export const stampSvgBlob = (design: StampDesign): Blob =>
   new Blob([renderStampSvg(design)], {

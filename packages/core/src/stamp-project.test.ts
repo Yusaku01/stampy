@@ -4,7 +4,7 @@ import {
   createStampyProject,
   parseStampyProject,
   serializeStampyProject,
-} from "./stamp-project";
+} from "./stamp-project.js";
 
 describe("stamp project", () => {
   it("normalizes design and animation values", () => {

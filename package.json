@@ -15,7 +15,8 @@
     "build": "pnpm -r build",
     "check": "pnpm -r check",
     "test": "pnpm -r test",
-    "pack:core": "pnpm --filter @stampy/core pack --pack-destination ./tmp"
+    "pack:core": "pnpm --filter @stampy/core pack --pack-destination ./tmp",
+    "verify:core-consumer": "node scripts/verify-core-consumer.mjs"
   },
   "devDependencies": {
     "typescript": "^5.9.3",

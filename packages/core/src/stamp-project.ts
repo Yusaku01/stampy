@@ -2,8 +2,8 @@ import {
   defaultStampDesign,
   normalizeStampDesign,
   type StampDesign,
-} from "./stamp-design";
-import type { StampAnimationPreset } from "./animation";
+} from "./stamp-design.js";
+import type { StampAnimationPreset } from "./animation.js";
 
 export const STAMPY_PROJECT_SCHEMA_VERSION = 1;
 

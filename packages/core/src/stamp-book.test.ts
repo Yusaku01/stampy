@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { createStampBook, earnStamp, revealStamp } from "./stamp-book";
+import { createStampBook, earnStamp, revealStamp } from "./stamp-book.js";
 
 describe("stamp book", () => {
   it("keeps earned stamps monotonic", () => {

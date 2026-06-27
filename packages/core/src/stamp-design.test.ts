@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { normalizeStampDesign, renderStampSvg } from "./stamp-design";
+import { normalizeStampDesign, renderStampSvg } from "./stamp-design.js";
 
 describe("renderStampSvg", () => {
   it("escapes user-provided text", () => {

@@ -5,7 +5,7 @@ import {
   type StampDesign,
   type StampIcon,
   type StampShape,
-} from "./stamp-design";
+} from "./stamp-design.js";
 
 const style = `:host {
   display: inline-block;
@@ -31,7 +31,11 @@ text {
 .stampy-main { font-size: 18px; }
 .stampy-sub { font-size: 10px; }`;
 
-export class StampyMarkElement extends HTMLElement {
+const HTMLElementBase: typeof HTMLElement =
+  globalThis.HTMLElement ??
+  (class extends EventTarget {} as unknown as typeof HTMLElement);
+
+export class StampyMarkElement extends HTMLElementBase {
   static observedAttributes = [
     "shape",
     "main-text",
@@ -93,7 +97,8 @@ export class StampyMarkElement extends HTMLElement {
 }
 
 export const registerStampyElements = (): void => {
-  if (!customElements.get("stampy-mark")) {
-    customElements.define("stampy-mark", StampyMarkElement);
+  if (!globalThis.customElements) return;
+  if (!globalThis.customElements.get("stampy-mark")) {
+    globalThis.customElements.define("stampy-mark", StampyMarkElement);
   }
 };

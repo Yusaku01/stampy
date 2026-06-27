@@ -26,6 +26,7 @@ Use this before publishing the first public repository or npm package.
 - [x] Run `pnpm check`.
 - [x] Run `pnpm build`.
 - [x] Run `pnpm pack:core`.
+- [x] Run `pnpm verify:core-consumer`.
 - [x] Inspect `tmp/stampy-core-*.tgz`.
 - [ ] Publish only after the tarball contains `dist`, `README.md`, `LICENSE`,
       and `package.json`, without test files.

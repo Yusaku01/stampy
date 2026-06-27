@@ -42,3 +42,6 @@ jobs:
 
       - name: Pack core package
         run: pnpm pack:core
+
+      - name: Verify packed core package in external consumer
+        run: pnpm verify:core-consumer
