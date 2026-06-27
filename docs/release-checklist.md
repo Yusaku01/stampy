@@ -13,7 +13,7 @@ Use this before publishing the first public repository or npm package.
 - [x] Enable branch protection for `main`.
       Required status check: `Test, typecheck, build, and pack`.
 - [x] Confirm the GitHub Actions CI workflow passes on the default branch.
-      Latest confirmed run: `28289917212`, success on 2026-06-27.
+      Latest confirmed run: `28290637089`, success on 2026-06-27.
 
 ## Package
 
@@ -27,6 +27,9 @@ Use this before publishing the first public repository or npm package.
 - [x] Run `pnpm build`.
 - [x] Run `pnpm pack:core`.
 - [x] Run `pnpm verify:core-consumer`.
+      This installs `tmp/stampy-core-0.0.0.tgz` into a temporary external app
+      and verifies the public package entry, JSON helpers, SVG rendering, and
+      CSS export.
 - [x] Inspect `tmp/stampy-core-*.tgz`.
 - [ ] Publish only after the tarball contains `dist`, `README.md`, `LICENSE`,
       and `package.json`, without test files.

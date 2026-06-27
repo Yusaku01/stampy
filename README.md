@@ -26,8 +26,8 @@ The project is split into two parts:
 - `docs/project-schema.md` documents the portable Stampy Project JSON format.
 - `docs/release-checklist.md` lists the remaining repository and npm publication
   gates.
-- `.github/workflows/ci.yml` runs tests, type checks, builds, and package
-  packing on pull requests and pushes to `main`.
+- `.github/workflows/ci.yml` runs tests, type checks, builds, package packing,
+  and an external consumer smoke test on pull requests and pushes to `main`.
 
 ## Quick Start
 
@@ -211,7 +211,11 @@ pnpm test
 pnpm check
 pnpm build
 pnpm pack:core
+pnpm verify:core-consumer
 ```
 
 `pnpm pack:core` writes the package tarball to `tmp/` so the contents can be
 inspected before npm publication.
+`pnpm verify:core-consumer` installs that tarball into a temporary external app
+and verifies the public package entry, project JSON helpers, SVG rendering, and
+CSS export.

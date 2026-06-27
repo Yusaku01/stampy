@@ -1,4 +1,4 @@
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { access, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { spawn } from "node:child_process";
@@ -30,6 +30,12 @@ const run = (command, args, options = {}) =>
 const consumer = await mkdtemp(join(tmpdir(), "stampy-consumer-"));
 
 try {
+  try {
+    await access(tarball);
+  } catch {
+    await run("pnpm", ["pack:core"]);
+  }
+
   await writeFile(
     join(consumer, "package.json"),
     JSON.stringify(
