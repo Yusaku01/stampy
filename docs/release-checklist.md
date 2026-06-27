@@ -20,6 +20,8 @@ Use this before publishing the first public repository or npm package.
 - [ ] Confirm the npm package name and scope. `npm view @stampy/core` returned
       `E404` on 2026-06-27, which means the package was not publicly readable at
       that time; final availability still depends on npm account/scope access.
+- [ ] Confirm npm authentication. `npm whoami` returned `E401 Unauthorized` on
+      2026-06-27, so publishing requires npm login before the first release.
 - [ ] Update `packages/core/package.json` from `0.0.0` to the intended release
       version.
 - [x] Run `pnpm test`.

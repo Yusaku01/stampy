@@ -28,6 +28,10 @@ Check the active npm account:
 npm whoami
 ```
 
+As of 2026-06-27, this repository's local environment returned
+`E401 Unauthorized` for `npm whoami`, so the first publish requires logging in
+to npm before continuing.
+
 ## Prepare The Release
 
 1. Choose the first release version.
