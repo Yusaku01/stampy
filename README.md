@@ -24,6 +24,7 @@ The project is split into two parts:
 - `docs/studio-guide.md` explains the local GUI workflow for editing,
   previewing, importing, and exporting stamps.
 - `docs/project-schema.md` documents the portable Stampy Project JSON format.
+- `docs/npm-publish.md` documents the manual first npm publication flow.
 - `docs/release-checklist.md` lists the remaining repository and npm publication
   gates.
 - `.github/workflows/ci.yml` runs tests, type checks, builds, package packing,
@@ -212,6 +213,12 @@ pnpm check
 pnpm build
 pnpm pack:core
 pnpm verify:core-consumer
+```
+
+Or run the same release gate as a single command:
+
+```sh
+pnpm release:core:check
 ```
 
 `pnpm pack:core` writes the package tarball to `tmp/` so the contents can be

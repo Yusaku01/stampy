@@ -30,9 +30,13 @@ Use this before publishing the first public repository or npm package.
       This installs `tmp/stampy-core-0.0.0.tgz` into a temporary external app
       and verifies the public package entry, JSON helpers, SVG rendering, and
       CSS export.
+- [x] Run `pnpm release:core:check`.
+      This wraps tests, type checks, builds, package packing, and external
+      consumer verification as a single release gate.
 - [x] Inspect `tmp/stampy-core-*.tgz`.
 - [ ] Publish only after the tarball contains `dist`, `README.md`, `LICENSE`,
       and `package.json`, without test files.
+- [ ] Follow `docs/npm-publish.md` for the first manual npm release.
 
 ## Product
 
