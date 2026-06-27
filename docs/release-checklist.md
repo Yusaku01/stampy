@@ -15,8 +15,8 @@ Use this before publishing the first public repository or npm package.
 - [x] Enable branch protection for `main`.
       Required status check: `Test, typecheck, build, and pack`.
 - [x] Confirm the GitHub Actions CI workflow passes on the default branch.
-      Latest confirmed run: `28291422468`, success on 2026-06-27 for
-      `6b6ea05`.
+      Latest confirmed run: `28291733640`, success on 2026-06-27 for
+      `cc7cf59`.
 
 ## Package
 
@@ -32,7 +32,7 @@ Use this before publishing the first public repository or npm package.
 - [x] Run `pnpm build`.
 - [x] Run `pnpm pack:core`.
 - [x] Run `pnpm verify:core-consumer`.
-      This installs `tmp/stampy-core-0.0.0.tgz` into a temporary external app
+      This installs `tmp/stampy-core-0.1.0.tgz` into a temporary external app
       and verifies the public package entry, JSON helpers, SVG rendering, and
       CSS export.
 - [x] Run `pnpm release:core:check`.
@@ -41,8 +41,10 @@ Use this before publishing the first public repository or npm package.
 - [x] Inspect `tmp/stampy-core-*.tgz`.
       The generated tarball contained `dist`, `README.md`, `LICENSE`, and
       `package.json`, without test files.
-- [ ] Publish only after npm account access and the first release version are
-      approved.
+- [x] Run `pnpm --filter @stampy/core publish --access public --dry-run`.
+      Confirmed dry-run publish for `@stampy/core@0.1.0`.
+- [x] Publish only after npm account access and the first release version are
+      approved. The owner will perform the real npm publish.
 - [ ] Follow `docs/npm-publish.md` for the first manual npm release.
 
 ## Product
