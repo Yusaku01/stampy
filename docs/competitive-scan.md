@@ -30,11 +30,23 @@ Representative top results:
 
 - `time-stamp`: timestamp formatter, unrelated.
 - `console-stamp`: console timestamp utility, unrelated.
+- `@commercetools-uikit/stamp`: UI label component, unrelated to stamp
+  authoring/export.
 - `railroad-diagrams`: SVG syntax diagrams, unrelated.
 - `d3-shape`: visualization primitives, unrelated.
+- `@stamp/core`, `@stamp/compose`, `stampit`: object factory composition
+  packages, unrelated to visual stamps.
 
 Takeaway: npm did not show a close JavaScript package for editable SVG stamp
 design plus embeddable press animations.
+
+Re-check on 2026-06-27:
+
+- `npm view @stampy/core version` returned `E404`, so the intended package name
+  was not publicly readable at that time.
+- `npm search stamp generator svg web component stamp --json` still returned
+  timestamp utilities, UI labels, object factory packages, and unrelated SVG or
+  SDK packages rather than a local stamp authoring/runtime toolkit.
 
 ## GitHub Search
 
@@ -59,6 +71,20 @@ Representative results:
 Takeaway: these are closer to full loyalty products or one-off projects than an
 embeddable authoring/runtime toolkit.
 
+## Web Search
+
+Re-check on 2026-06-27:
+
+- `make-stamp.online` and MyStampReady are close in the sense that they provide
+  online stamp designers with PNG/SVG/PDF-oriented export, but they are hosted
+  image makers rather than an OSS embeddable runtime with project JSON and press
+  animation hooks.
+- Online PNG Tools has an image-to-stamp converter, but it is a raster image
+  conversion workflow rather than structured SVG stamp authoring data.
+- SVGator and related SVG animation tools cover general vector animation export,
+  but they do not specialize in stamp authoring, stamp-book data, or reusable
+  press-animation APIs for web apps.
+
 ## Differentiation
 
 Stampy should position itself as a stamp authoring and runtime toolkit, not a
@@ -76,3 +102,13 @@ Re-run this scan before public launch or npm publication if any of these change:
 - the target positioning,
 - the runtime moves from local/static-first to SaaS,
 - or a discovered competitor ships project JSON plus embeddable animation hooks.
+
+## Sources
+
+- npm registry search: `npm search stamp generator svg web component stamp --json`.
+- npm package-name check: `npm view @stampy/core version`.
+- make-stamp.online: https://make-stamp.online/
+- MyStampReady: https://mystampready.com/en/constructor/
+- Online PNG Tools image-to-stamp converter:
+  https://onlinepngtools.com/convert-image-to-stamp
+- SVGator export documentation: https://www.svgator.com/help/export-and-file-formats

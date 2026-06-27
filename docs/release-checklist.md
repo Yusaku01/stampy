@@ -36,9 +36,15 @@ Use this before publishing the first public repository or npm package.
 
 ## Product
 
-- [ ] Verify Studio at `http://localhost:4321/`.
-- [ ] Verify the vanilla example at `http://127.0.0.1:5173/`.
-- [ ] Export SVG, PNG, and project JSON from Studio.
-- [ ] Import the exported project JSON back into Studio.
-- [ ] Check light/dark mode and English/Japanese UI.
-- [ ] Re-run `docs/competitive-scan.md` before public announcement.
+- [x] Verify Studio at `http://localhost:4321/`.
+      Confirmed with Chrome/Playwright on 2026-06-27.
+- [x] Verify the vanilla example at `http://127.0.0.1:5173/`.
+      Confirmed with Chrome/Playwright on 2026-06-27.
+- [x] Export SVG, PNG, and project JSON from Studio.
+      Confirmed SVG text output, a non-empty PNG download, and project JSON.
+- [x] Import the exported project JSON back into Studio.
+      Confirmed restored stamp text, locale, theme, and animation preset.
+- [x] Check light/dark mode and English/Japanese UI.
+      Confirmed Japanese UI text and dark theme state.
+- [x] Re-run `docs/competitive-scan.md` before public announcement.
+      Re-checked npm and web search results on 2026-06-27.
