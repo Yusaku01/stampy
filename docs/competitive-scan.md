@@ -79,6 +79,11 @@ Re-check on 2026-06-27:
   online stamp designers with PNG/SVG/PDF-oriented export, but they are hosted
   image makers rather than an OSS embeddable runtime with project JSON and press
   animation hooks.
+- Stampdy, Stampforger, StampJam, and Company Stamp Generator are also close as
+  browser-based stamp makers with image or document export, but they are
+  positioned around creating downloadable digital/print stamp assets rather than
+  shipping a reusable JavaScript runtime, portable project JSON, local Studio,
+  and customizable press-animation hooks for other apps.
 - Online PNG Tools has an image-to-stamp converter, but it is a raster image
   conversion workflow rather than structured SVG stamp authoring data.
 - SVGator and related SVG animation tools cover general vector animation export,
@@ -109,6 +114,10 @@ Re-run this scan before public launch or npm publication if any of these change:
 - npm package-name check: `npm view @stampy/core version`.
 - make-stamp.online: https://make-stamp.online/
 - MyStampReady: https://mystampready.com/en/constructor/
+- Stampdy: https://stampdy.com/
+- Stampforger: https://stampforger.com/
+- StampJam: https://stampjam.com/
+- Company Stamp Generator: https://www.companystampgenerator.com/
 - Online PNG Tools image-to-stamp converter:
   https://onlinepngtools.com/convert-image-to-stamp
 - SVGator export documentation: https://www.svgator.com/help/export-and-file-formats

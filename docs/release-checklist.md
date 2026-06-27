@@ -15,8 +15,8 @@ Use this before publishing the first public repository or npm package.
 - [x] Enable branch protection for `main`.
       Required status check: `Test, typecheck, build, and pack`.
 - [x] Confirm the GitHub Actions CI workflow passes on the default branch.
-      Latest confirmed run: `28291335649`, success on 2026-06-27 for
-      `a6df9e4`.
+      Latest confirmed run: `28291422468`, success on 2026-06-27 for
+      `6b6ea05`.
 
 ## Package
 
