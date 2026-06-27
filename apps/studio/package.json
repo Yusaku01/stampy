@@ -1,0 +1,22 @@
+{
+  "name": "@stampy/studio",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "precheck": "pnpm --filter @stampy/core build",
+    "check": "astro check && tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@stampy/core": "workspace:*",
+    "astro": "^5.16.6"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.15"
+  }
+}

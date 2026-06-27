@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "name": "Toukatsu Yumeguri visit stamp",
+  "locale": "ja",
+  "theme": "auto",
+  "stamp": {
+    "id": "toukatsu-yumeguri-visit",
+    "shape": "circle",
+    "mainText": "湯巡り済み",
+    "subText": "東葛湯巡り",
+    "dateText": "2026.06.27",
+    "ink": "#b93632",
+    "paper": "#fffaf4",
+    "icon": "steam",
+    "distress": 0.72,
+    "roughen": 2.25,
+    "rotate": -6
+  },
+  "animation": {
+    "preset": "classic",
+    "durationMs": 780,
+    "intensity": 1
+  },
+  "updatedAt": "2026-06-27T00:00:00.000Z"
+}

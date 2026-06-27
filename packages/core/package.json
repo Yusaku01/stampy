@@ -1,0 +1,39 @@
+{
+  "name": "@stampy/core",
+  "version": "0.0.0",
+  "description": "Framework-agnostic SVG stamp rendering, project JSON, and press animations for static sites and web apps.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "stamp",
+    "svg",
+    "web-components",
+    "animation",
+    "static-site",
+    "studio"
+  ],
+  "sideEffects": [
+    "./dist/styles.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && cp src/styles.css dist/styles.css",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "prepack": "pnpm build",
+    "test": "vitest run src"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.15"
+  }
+}

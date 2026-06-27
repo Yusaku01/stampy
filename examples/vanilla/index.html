@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stampy Vanilla Example</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <main class="example-shell">
+      <section class="example-copy">
+        <p class="eyebrow">Stampy Embed Example</p>
+        <h1>Framework-free stamp integration</h1>
+        <p>
+          This page imports <code>@stampy/core</code>, registers the Web
+          Component, renders a stamp from JSON data, and triggers a custom press
+          animation.
+        </p>
+        <div class="actions">
+          <button type="button" data-action="press-classic">Classic</button>
+          <button type="button" data-action="press-custom">Custom</button>
+        </div>
+      </section>
+
+      <section class="stamp-card" aria-label="Stamp preview">
+        <stampy-mark id="example-stamp"></stampy-mark>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
