@@ -52,11 +52,13 @@ pnpm --filter @stampy/vanilla-example exec vite --host 127.0.0.1
 
 ## Embedding
 
-Install the runtime package in a web app:
+After the first npm release, install the runtime package in a web app:
 
 ```sh
 pnpm add @stampy/core
 ```
+
+Until then, use this repository locally with the included Studio and examples.
 
 ```html
 <stampy-mark
