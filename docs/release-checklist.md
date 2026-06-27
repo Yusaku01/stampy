@@ -13,7 +13,8 @@ Use this before publishing the first public repository or npm package.
 - [x] Enable branch protection for `main`.
       Required status check: `Test, typecheck, build, and pack`.
 - [x] Confirm the GitHub Actions CI workflow passes on the default branch.
-      Latest confirmed run: `28291209393`, success on 2026-06-27.
+      Latest confirmed run: `28291335649`, success on 2026-06-27 for
+      `a6df9e4`.
 
 ## Package
 
@@ -36,8 +37,10 @@ Use this before publishing the first public repository or npm package.
       This wraps tests, type checks, builds, package packing, and external
       consumer verification as a single release gate.
 - [x] Inspect `tmp/stampy-core-*.tgz`.
-- [ ] Publish only after the tarball contains `dist`, `README.md`, `LICENSE`,
-      and `package.json`, without test files.
+      The generated tarball contained `dist`, `README.md`, `LICENSE`, and
+      `package.json`, without test files.
+- [ ] Publish only after npm account access and the first release version are
+      approved.
 - [ ] Follow `docs/npm-publish.md` for the first manual npm release.
 
 ## Product
