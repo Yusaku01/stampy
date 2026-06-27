@@ -29,6 +29,8 @@ The project is split into two parts:
   gates.
 - `.github/workflows/ci.yml` runs tests, type checks, builds, package packing,
   and an external consumer smoke test on pull requests and pushes to `main`.
+- GitHub issue templates, a pull request template, and Dependabot config keep
+  future OSS maintenance structured.
 
 ## Quick Start
 

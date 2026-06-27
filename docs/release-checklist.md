@@ -10,6 +10,8 @@ Use this before publishing the first public repository or npm package.
 - [x] Confirm `README.md`, `LICENSE`, `CONTRIBUTING.md`, and `SECURITY.md` are
       readable on GitHub. Confirmed through the GitHub API on 2026-06-27.
 - [x] Add the GitHub repository description and topics.
+- [x] Add GitHub issue templates, a pull request template, and Dependabot
+      config for public maintenance.
 - [x] Enable branch protection for `main`.
       Required status check: `Test, typecheck, build, and pack`.
 - [x] Confirm the GitHub Actions CI workflow passes on the default branch.

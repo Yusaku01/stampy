@@ -1,0 +1,63 @@
+name: Bug report
+description: Report behavior that is broken or surprising.
+title: "fix: "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is broken?
+      placeholder: The stamp preview/export/runtime behaves unexpectedly when...
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List the smallest steps that trigger the issue.
+      placeholder: |
+        1. Open...
+        2. Set...
+        3. Run...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Core package
+        - Studio
+        - Vanilla example
+        - Documentation
+        - CI or repository setup
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, Node.js, pnpm, OS, or package version if relevant.
+      placeholder: "Node 24, pnpm 11.7.0, Chrome, macOS"
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Screenshots, logs, exported project JSON, or related links.
