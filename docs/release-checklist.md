@@ -25,8 +25,8 @@ Use this before publishing the first public repository or npm package.
       that time; final availability still depends on npm account/scope access.
 - [ ] Confirm npm authentication. `npm whoami` returned `E401 Unauthorized` on
       2026-06-27, so publishing requires npm login before the first release.
-- [ ] Update `packages/core/package.json` from `0.0.0` to the intended release
-      version.
+- [x] Update `packages/core/package.json` from `0.0.0` to the intended release
+      version. First release version: `0.1.0`.
 - [x] Run `pnpm test`.
 - [x] Run `pnpm check`.
 - [x] Run `pnpm build`.

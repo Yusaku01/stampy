@@ -20,9 +20,9 @@
     "release:core:check": "pnpm test && pnpm check && pnpm build && rm -rf tmp && mkdir -p tmp && pnpm pack:core && pnpm verify:core-consumer"
   },
   "devDependencies": {
-    "typescript": "^5.9.3",
-    "vite": "^7.2.7",
-    "vitest": "^4.0.15"
+    "typescript": "5.9.3",
+    "vite": "7.3.6",
+    "vitest": "4.1.9"
   },
   "packageManager": "pnpm@11.7.0"
 }

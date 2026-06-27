@@ -1,6 +1,6 @@
 {
   "name": "@stampy/core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Framework-agnostic SVG stamp rendering, project JSON, and press animations for static sites and web apps.",
   "type": "module",
   "license": "MIT",
@@ -46,6 +46,6 @@
     "test": "vitest run src"
   },
   "devDependencies": {
-    "vitest": "^4.0.15"
+    "vitest": "4.1.9"
   }
 }

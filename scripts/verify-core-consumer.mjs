@@ -1,10 +1,13 @@
-import { access, mkdtemp, rm, writeFile } from "node:fs/promises";
+import { access, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { spawn } from "node:child_process";
 
 const root = resolve(import.meta.dirname, "..");
-const tarball = join(root, "tmp", "stampy-core-0.0.0.tgz");
+const corePackage = JSON.parse(
+  await readFile(join(root, "packages", "core", "package.json"), "utf8"),
+);
+const tarball = join(root, "tmp", `stampy-core-${corePackage.version}.tgz`);
 
 const run = (command, args, options = {}) =>
   new Promise((resolveRun, reject) => {
