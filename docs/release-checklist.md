@@ -9,8 +9,11 @@ Use this before publishing the first public repository or npm package.
 - [x] Add the repository URL to `packages/core/package.json`.
 - [ ] Confirm `README.md`, `LICENSE`, `CONTRIBUTING.md`, and `SECURITY.md` render
       correctly on GitHub.
-- [ ] Enable branch protection for `main`.
-- [ ] Confirm the GitHub Actions CI workflow passes on the default branch.
+- [x] Add the GitHub repository description and topics.
+- [x] Enable branch protection for `main`.
+      Required status check: `Test, typecheck, build, and pack`.
+- [x] Confirm the GitHub Actions CI workflow passes on the default branch.
+      Latest confirmed run: `28289917212`, success on 2026-06-27.
 
 ## Package
 
@@ -19,11 +22,11 @@ Use this before publishing the first public repository or npm package.
       that time; final availability still depends on npm account/scope access.
 - [ ] Update `packages/core/package.json` from `0.0.0` to the intended release
       version.
-- [ ] Run `pnpm test`.
-- [ ] Run `pnpm check`.
-- [ ] Run `pnpm build`.
-- [ ] Run `pnpm pack:core`.
-- [ ] Inspect `tmp/stampy-core-*.tgz`.
+- [x] Run `pnpm test`.
+- [x] Run `pnpm check`.
+- [x] Run `pnpm build`.
+- [x] Run `pnpm pack:core`.
+- [x] Inspect `tmp/stampy-core-*.tgz`.
 - [ ] Publish only after the tarball contains `dist`, `README.md`, `LICENSE`,
       and `package.json`, without test files.
 
