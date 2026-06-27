@@ -32,9 +32,10 @@ const customAnimatorExample = `await pressStamp(stamp, {
         <h1 data-i18n="heroTitle">Design stamps and press animations</h1>
       </div>
       <div class="header-actions">
-        <label class="compact-control">
+        <label class="compact-control" for="project-name">
           <span data-i18n="projectName">Project</span>
           <input
+            id="project-name"
             name="projectName"
             value="Onsen visit stamp"
             maxlength="48"
@@ -42,16 +43,16 @@ const customAnimatorExample = `await pressStamp(stamp, {
             data-project-name
           />
         </label>
-        <label class="compact-control">
+        <label class="compact-control" for="locale">
           <span data-i18n="language">Language</span>
-          <select name="locale" data-locale-select aria-label="Language">
+          <select id="locale" name="locale" data-locale-select aria-label="Language">
             <option value="en">English</option>
             <option value="ja">日本語</option>
           </select>
         </label>
-        <label class="compact-control">
+        <label class="compact-control" for="theme">
           <span data-i18n="theme">Theme</span>
-          <select name="theme" data-theme-select aria-label="Theme">
+          <select id="theme" name="theme" data-theme-select aria-label="Theme">
             <option value="auto">Auto</option>
             <option value="light">Light</option>
             <option value="dark">Dark</option>
@@ -66,9 +67,14 @@ const customAnimatorExample = `await pressStamp(stamp, {
         <button type="button" class="ghost-button" data-action="export-json">
           <span data-i18n="exportJson">Export JSON</span>
         </button>
-        <label class="file-button">
+        <label class="file-button" for="project-import">
           <span data-i18n="importJson">Import JSON</span>
-          <input type="file" accept="application/json,.json" data-project-import />
+          <input
+            id="project-import"
+            type="file"
+            accept="application/json,.json"
+            data-project-import
+          />
         </label>
         <button type="button" class="primary-button" data-action="export-svg">
           <span data-i18n="exportSvg">Export SVG</span>
@@ -80,54 +86,105 @@ const customAnimatorExample = `await pressStamp(stamp, {
       <section class="tool-panel" aria-labelledby="stamp-controls-title">
         <h2 id="stamp-controls-title" data-i18n="stamp">Stamp</h2>
         <form class="control-grid" data-stampy-form>
-          <label>
+          <label for="main-text">
             <span data-i18n="mainText">Main text</span>
-            <input name="mainText" value="Visited" maxlength="16" autocomplete="off" />
+            <input
+              id="main-text"
+              name="mainText"
+              value="Visited"
+              maxlength="16"
+              autocomplete="off"
+            />
           </label>
-          <label>
+          <label for="sub-text">
             <span data-i18n="subText">Sub text</span>
-            <input name="subText" value="Stampy" maxlength="18" autocomplete="off" />
+            <input
+              id="sub-text"
+              name="subText"
+              value="Stampy"
+              maxlength="18"
+              autocomplete="off"
+            />
           </label>
-          <label>
+          <label for="date-text">
             <span data-i18n="date">Date</span>
-            <input name="dateText" value="2026.06.27" maxlength="12" autocomplete="off" />
+            <input
+              id="date-text"
+              name="dateText"
+              value="2026.06.27"
+              maxlength="12"
+              autocomplete="off"
+            />
           </label>
-          <label>
+          <label for="shape">
             <span data-i18n="shape">Shape</span>
-            <select name="shape">
+            <select id="shape" name="shape">
               <option value="circle" data-i18n="circle">Circle</option>
               <option value="ticket" data-i18n="ticket">Ticket</option>
               <option value="rounded" data-i18n="rounded">Rounded</option>
             </select>
           </label>
-          <label>
+          <label for="icon">
             <span data-i18n="icon">Icon</span>
-            <select name="icon">
+            <select id="icon" name="icon">
               <option value="steam" data-i18n="steam">Steam</option>
               <option value="star" data-i18n="star">Star</option>
               <option value="spark" data-i18n="spark">Spark</option>
               <option value="none" data-i18n="none">None</option>
             </select>
           </label>
-          <label>
+          <label for="ink">
             <span data-i18n="ink">Ink</span>
-            <input name="ink" type="color" value="#b93632" />
+            <input id="ink" name="ink" type="color" value="#b93632" />
           </label>
-          <label>
+          <label for="paper">
             <span data-i18n="paper">Paper</span>
-            <input name="paper" type="color" value="#fffaf4" />
+            <input id="paper" name="paper" type="color" value="#fffaf4" />
           </label>
-          <label>
-            <span data-i18n="distress">Distress</span>
-            <input name="distress" type="range" min="0" max="1" step="0.05" value="0.72" />
+          <label class="range-control" for="distress">
+            <span class="range-head">
+              <span data-i18n="distress">Distress</span>
+              <output for="distress" data-range-output="distress">0.72</output>
+            </span>
+            <input
+              id="distress"
+              name="distress"
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.72"
+            />
           </label>
-          <label>
-            <span data-i18n="roughen">Roughen</span>
-            <input name="roughen" type="range" min="0" max="8" step="0.25" value="2.25" />
+          <label class="range-control" for="roughen">
+            <span class="range-head">
+              <span data-i18n="roughen">Roughen</span>
+              <output for="roughen" data-range-output="roughen">2.25</output>
+            </span>
+            <input
+              id="roughen"
+              name="roughen"
+              type="range"
+              min="0"
+              max="8"
+              step="0.25"
+              value="2.25"
+            />
           </label>
-          <label>
-            <span data-i18n="rotate">Rotate</span>
-            <input name="rotate" type="range" min="-24" max="24" step="1" value="-6" />
+          <label class="range-control" for="rotate">
+            <span class="range-head">
+              <span data-i18n="rotate">Rotate</span>
+              <output for="rotate" data-range-output="rotate">-6deg</output>
+            </span>
+            <input
+              id="rotate"
+              name="rotate"
+              type="range"
+              min="-24"
+              max="24"
+              step="1"
+              value="-6"
+            />
           </label>
         </form>
       </section>
@@ -136,7 +193,7 @@ const customAnimatorExample = `await pressStamp(stamp, {
         <div class="preview-toolbar">
           <div>
             <h2 id="preview-title" data-i18n="preview">Preview</h2>
-            <p data-status data-i18n="ready">Ready</p>
+            <p data-status data-i18n="ready" aria-live="polite" aria-atomic="true">Ready</p>
           </div>
           <div class="preview-actions">
             <button type="button" class="ghost-button" data-action="press">
@@ -163,22 +220,44 @@ const customAnimatorExample = `await pressStamp(stamp, {
       <section class="tool-panel" aria-labelledby="animation-title">
         <h2 id="animation-title" data-i18n="animation">Animation</h2>
         <form class="control-grid" data-animation-form>
-          <label>
+          <label for="preset">
             <span data-i18n="preset">Preset</span>
-            <select name="preset">
+            <select id="preset" name="preset">
               <option value="classic" data-i18n="classicPress">Classic press</option>
               <option value="bounce" data-i18n="bounce">Bounce</option>
               <option value="ink" data-i18n="inkReveal">Ink reveal</option>
               <option value="none" data-i18n="none">None</option>
             </select>
           </label>
-          <label>
-            <span data-i18n="duration">Duration</span>
-            <input name="durationMs" type="range" min="120" max="1600" step="20" value="780" />
+          <label class="range-control" for="duration-ms">
+            <span class="range-head">
+              <span data-i18n="duration">Duration</span>
+              <output for="duration-ms" data-range-output="durationMs">780ms</output>
+            </span>
+            <input
+              id="duration-ms"
+              name="durationMs"
+              type="range"
+              min="120"
+              max="1600"
+              step="20"
+              value="780"
+            />
           </label>
-          <label>
-            <span data-i18n="intensity">Intensity</span>
-            <input name="intensity" type="range" min="0.4" max="1.8" step="0.1" value="1" />
+          <label class="range-control" for="intensity">
+            <span class="range-head">
+              <span data-i18n="intensity">Intensity</span>
+              <output for="intensity" data-range-output="intensity">1.0x</output>
+            </span>
+            <input
+              id="intensity"
+              name="intensity"
+              type="range"
+              min="0.4"
+              max="1.8"
+              step="0.1"
+              value="1"
+            />
           </label>
         </form>
         <details>

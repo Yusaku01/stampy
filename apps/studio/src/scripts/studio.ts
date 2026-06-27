@@ -37,6 +37,9 @@ const projectImportInput = document.querySelector<HTMLInputElement>(
 const embedCode = document.querySelector<HTMLElement>("[data-embed-code]");
 const projectCode = document.querySelector<HTMLElement>("[data-project-code]");
 const status = document.querySelector<HTMLElement>("[data-status]");
+const rangeOutputs = document.querySelectorAll<HTMLOutputElement>(
+  "[data-range-output]",
+);
 
 type Locale = "en" | "ja";
 type StudioTheme = "auto" | "light" | "dark";
@@ -150,6 +153,27 @@ let locale: Locale = "en";
 let theme: StudioTheme = "auto";
 
 const translate = (key: string): string => messages[locale][key] ?? key;
+
+const formatRangeValue = (name: string, value: string): string => {
+  const numberValue = Number(value);
+  if (name === "rotate") return `${numberValue}deg`;
+  if (name === "durationMs") return `${numberValue}ms`;
+  if (name === "intensity") return `${numberValue.toFixed(1)}x`;
+  return numberValue.toFixed(2);
+};
+
+const updateRangeOutputs = (): void => {
+  rangeOutputs.forEach((output) => {
+    const name = output.dataset.rangeOutput;
+    if (!name) return;
+
+    const input = document.querySelector<HTMLInputElement>(
+      `input[name="${name}"]`,
+    );
+    if (!input) return;
+    output.value = formatRangeValue(name, input.value);
+  });
+};
 
 const getFormValue = (form: HTMLFormElement, name: string): string => {
   const value = new FormData(form).get(name);
@@ -326,12 +350,17 @@ const updatePreview = (): void => {
       stamp.setAttribute(name, String(value));
     });
   }
+  updateRangeOutputs();
   updateEmbedCode(design);
   updateProjectCode(getProject());
 };
 
 stampForm?.addEventListener("input", updatePreview);
-animationForm?.addEventListener("input", () => setStatusKey("animationUpdated"));
+animationForm?.addEventListener("input", () => {
+  updateRangeOutputs();
+  updateProjectCode(getProject());
+  setStatusKey("animationUpdated");
+});
 projectNameInput?.addEventListener("input", () => updateProjectCode(getProject()));
 localeSelect?.addEventListener("change", () => {
   applyLocale(localeSelect.value === "ja" ? "ja" : "en");
