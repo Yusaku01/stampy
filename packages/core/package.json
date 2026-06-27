@@ -4,6 +4,15 @@
   "description": "Framework-agnostic SVG stamp rendering, project JSON, and press animations for static sites and web apps.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yusaku01/stampy.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/Yusaku01/stampy/issues"
+  },
+  "homepage": "https://github.com/Yusaku01/stampy#readme",
   "keywords": [
     "stamp",
     "svg",

@@ -4,8 +4,9 @@ Use this before publishing the first public repository or npm package.
 
 ## Repository
 
-- [ ] Choose the public repository URL.
-- [ ] Add the repository URL to `packages/core/package.json`.
+- [x] Choose the public repository URL:
+      `https://github.com/Yusaku01/stampy`.
+- [x] Add the repository URL to `packages/core/package.json`.
 - [ ] Confirm `README.md`, `LICENSE`, `CONTRIBUTING.md`, and `SECURITY.md` render
       correctly on GitHub.
 - [ ] Enable branch protection for `main`.
