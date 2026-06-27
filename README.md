@@ -21,6 +21,8 @@ The project is split into two parts:
 - `SECURITY.md` defines the current pre-1.0 security reporting posture.
 - `docs/competitive-scan.md` records why this project is differentiated enough
   to proceed.
+- `docs/studio-guide.md` explains the local GUI workflow for editing,
+  previewing, importing, and exporting stamps.
 - `docs/project-schema.md` documents the portable Stampy Project JSON format.
 - `docs/release-checklist.md` lists the remaining repository and npm publication
   gates.
@@ -35,6 +37,10 @@ pnpm dev
 ```
 
 Open the local Studio URL printed by Astro.
+
+See `docs/studio-guide.md` for the GUI workflow, including SVG/PNG export,
+Project JSON import/export, language/theme options, and press animation
+previewing.
 
 Run the framework-free embed example:
 
