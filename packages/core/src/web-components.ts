@@ -38,10 +38,12 @@ const HTMLElementBase: typeof HTMLElement =
 export class StampyMarkElement extends HTMLElementBase {
   static observedAttributes = [
     "shape",
+    "corner-radius",
     "main-text",
     "sub-text",
     "date-text",
     "ink",
+    "ink-opacity",
     "paper",
     "icon",
     "distress",
@@ -63,10 +65,16 @@ export class StampyMarkElement extends HTMLElementBase {
     return normalizeStampDesign({
       id: this.id || defaultStampDesign.id,
       shape: this.getAttribute("shape") as StampShape | undefined,
+      cornerRadius: Number(
+        this.getAttribute("corner-radius") ?? defaultStampDesign.cornerRadius,
+      ),
       mainText: this.getAttribute("main-text") ?? undefined,
       subText: this.getAttribute("sub-text") ?? undefined,
       dateText: this.getAttribute("date-text") ?? undefined,
       ink: this.getAttribute("ink") ?? undefined,
+      inkOpacity: Number(
+        this.getAttribute("ink-opacity") ?? defaultStampDesign.inkOpacity,
+      ),
       paper: this.getAttribute("paper") ?? undefined,
       icon: this.getAttribute("icon") as StampIcon | undefined,
       distress: Number(this.getAttribute("distress") ?? defaultStampDesign.distress),
@@ -78,10 +86,12 @@ export class StampyMarkElement extends HTMLElementBase {
   set design(value: StampDesign) {
     const design = normalizeStampDesign(value);
     this.setAttribute("shape", design.shape);
+    this.setAttribute("corner-radius", String(design.cornerRadius));
     this.setAttribute("main-text", design.mainText);
     this.setAttribute("sub-text", design.subText);
     this.setAttribute("date-text", design.dateText);
     this.setAttribute("ink", design.ink);
+    this.setAttribute("ink-opacity", String(design.inkOpacity));
     this.setAttribute("paper", design.paper);
     this.setAttribute("icon", design.icon);
     this.setAttribute("distress", String(design.distress));

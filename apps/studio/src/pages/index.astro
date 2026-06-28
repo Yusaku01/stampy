@@ -1,18 +1,18 @@
 ---
 import { ClientRouter } from "astro:transitions";
 
-const customAnimatorExample = `await pressStamp(stamp, {
-  preset: "classic",
-  animator: async (element, context) => {
-    element.animate(
-      [
-        { transform: "scale(1.6) translateY(-32px)", opacity: 0 },
-        { transform: "scale(1)", opacity: 1 }
-      ],
-      { duration: context.durationMs, easing: "cubic-bezier(.2,.8,.2,1)" }
-    );
-  }
-});`;
+const iconAttrs = {
+  "aria-hidden": "true",
+  class: "button-icon",
+  fill: "none",
+  height: "16",
+  stroke: "currentColor",
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  viewBox: "0 0 24 24",
+  width: "16",
+} as const;
 ---
 
 <!doctype html>
@@ -28,57 +28,43 @@ const customAnimatorExample = `await pressStamp(stamp, {
   <body data-theme="light">
     <header class="studio-header">
       <div>
-        <p class="eyebrow">Stampy Studio</p>
-        <h1 data-i18n="heroTitle">Design stamps and press animations</h1>
+        <h1 class="studio-title">Stampy Studio</h1>
       </div>
       <div class="header-actions">
-        <label class="compact-control" for="project-name">
-          <span data-i18n="projectName">Project</span>
-          <input
-            id="project-name"
-            name="projectName"
-            value="Onsen visit stamp"
-            maxlength="48"
-            autocomplete="off"
-            data-project-name
-          />
-        </label>
-        <label class="compact-control" for="locale">
-          <span data-i18n="language">Language</span>
-          <select id="locale" name="locale" data-locale-select aria-label="Language">
-            <option value="en">English</option>
-            <option value="ja">日本語</option>
-          </select>
-        </label>
-        <label class="compact-control" for="theme">
-          <span data-i18n="theme">Theme</span>
-          <select id="theme" name="theme" data-theme-select aria-label="Theme">
-            <option value="auto">Auto</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
-        </label>
-        <button type="button" class="ghost-button" data-action="copy-html">
-          <span data-i18n="copyEmbed">Copy embed</span>
-        </button>
-        <button type="button" class="ghost-button" data-action="copy-json">
-          <span data-i18n="copyJson">Copy JSON</span>
-        </button>
-        <button type="button" class="ghost-button" data-action="export-json">
-          <span data-i18n="exportJson">Export JSON</span>
-        </button>
-        <label class="file-button" for="project-import">
-          <span data-i18n="importJson">Import JSON</span>
-          <input
-            id="project-import"
-            type="file"
-            accept="application/json,.json"
-            data-project-import
-          />
-        </label>
-        <button type="button" class="primary-button" data-action="export-svg">
-          <span data-i18n="exportSvg">Export SVG</span>
-        </button>
+        <fieldset class="compact-control segmented-control" aria-label="Language">
+          <div class="segment-options" role="group" aria-label="Language">
+            <button type="button" aria-pressed="true" data-locale-option="en">
+              English
+            </button>
+            <button type="button" aria-pressed="false" data-locale-option="ja">
+              日本語
+            </button>
+          </div>
+        </fieldset>
+        <div class="theme-menu">
+          <button
+            type="button"
+            class="theme-menu-toggle"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="theme-options"
+            data-theme-toggle
+          >
+            <span data-theme-label data-i18n="auto">Auto</span>
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div id="theme-options" class="menu-options theme-options" role="menu" hidden>
+            <button type="button" role="menuitemradio" aria-checked="true" data-theme-option="auto">
+              <span data-i18n="auto">Auto</span>
+            </button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-theme-option="light">
+              <span data-i18n="light">Light</span>
+            </button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-theme-option="dark">
+              <span data-i18n="dark">Dark</span>
+            </button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -120,9 +106,37 @@ const customAnimatorExample = `await pressStamp(stamp, {
             <span data-i18n="shape">Shape</span>
             <select id="shape" name="shape">
               <option value="circle" data-i18n="circle">Circle</option>
+              <option value="square" data-i18n="square">Square</option>
+              <option value="triangle" data-i18n="triangle">Triangle</option>
+              <option value="star" data-i18n="starShape">Star</option>
               <option value="ticket" data-i18n="ticket">Ticket</option>
-              <option value="rounded" data-i18n="rounded">Rounded</option>
             </select>
+          </label>
+          <label class="range-control" for="corner-radius">
+            <span class="range-head">
+              <span data-i18n="cornerRadius">Corner radius</span>
+              <span class="range-value-field">
+                <input
+                  type="number"
+                  min="0"
+                  max="32"
+                  step="1"
+                  value="0"
+                  aria-label="Corner radius value"
+                  data-range-number="cornerRadius"
+                />
+                <span>px</span>
+              </span>
+            </span>
+            <input
+              id="corner-radius"
+              name="cornerRadius"
+              type="range"
+              min="0"
+              max="32"
+              step="1"
+              value="0"
+            />
           </label>
           <label for="icon">
             <span data-i18n="icon">Icon</span>
@@ -134,17 +148,53 @@ const customAnimatorExample = `await pressStamp(stamp, {
             </select>
           </label>
           <label for="ink">
-            <span data-i18n="ink">Ink</span>
+            <span data-i18n="ink">Background color</span>
             <input id="ink" name="ink" type="color" value="#b93632" />
           </label>
+          <label class="range-control" for="ink-opacity">
+            <span class="range-head">
+              <span data-i18n="inkOpacity">Opacity</span>
+              <span class="range-value-field">
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="5"
+                  value="100"
+                  aria-label="Opacity value"
+                  data-range-number="inkOpacity"
+                />
+                <span>%</span>
+              </span>
+            </span>
+            <input
+              id="ink-opacity"
+              name="inkOpacity"
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value="1"
+            />
+          </label>
           <label for="paper">
-            <span data-i18n="paper">Paper</span>
+            <span data-i18n="paper">Text color</span>
             <input id="paper" name="paper" type="color" value="#fffaf4" />
           </label>
           <label class="range-control" for="distress">
             <span class="range-head">
               <span data-i18n="distress">Distress</span>
-              <output for="distress" data-range-output="distress">0.72</output>
+              <span class="range-value-field">
+                <input
+                  type="number"
+                  min="0"
+                  max="1"
+                  step="0.05"
+                  value="0.72"
+                  aria-label="Distress value"
+                  data-range-number="distress"
+                />
+              </span>
             </span>
             <input
               id="distress"
@@ -159,7 +209,17 @@ const customAnimatorExample = `await pressStamp(stamp, {
           <label class="range-control" for="roughen">
             <span class="range-head">
               <span data-i18n="roughen">Roughen</span>
-              <output for="roughen" data-range-output="roughen">2.25</output>
+              <span class="range-value-field">
+                <input
+                  type="number"
+                  min="0"
+                  max="8"
+                  step="0.25"
+                  value="2.25"
+                  aria-label="Roughen value"
+                  data-range-number="roughen"
+                />
+              </span>
             </span>
             <input
               id="roughen"
@@ -174,14 +234,25 @@ const customAnimatorExample = `await pressStamp(stamp, {
           <label class="range-control" for="rotate">
             <span class="range-head">
               <span data-i18n="rotate">Rotate</span>
-              <output for="rotate" data-range-output="rotate">-6deg</output>
+              <span class="range-value-field">
+                <input
+                  type="number"
+                  min="-360"
+                  max="360"
+                  step="1"
+                  value="-6"
+                  aria-label="Rotate value"
+                  data-range-number="rotate"
+                />
+                <span>deg</span>
+              </span>
             </span>
             <input
               id="rotate"
               name="rotate"
               type="range"
-              min="-24"
-              max="24"
+              min="-360"
+              max="360"
               step="1"
               value="-6"
             />
@@ -189,36 +260,116 @@ const customAnimatorExample = `await pressStamp(stamp, {
         </form>
       </section>
 
-      <section class="preview-panel" aria-labelledby="preview-title">
-        <div class="preview-toolbar">
-          <div>
-            <h2 id="preview-title" data-i18n="preview">Preview</h2>
-            <p data-status data-i18n="ready" aria-live="polite" aria-atomic="true">Ready</p>
+      <section class="workspace-panel" aria-labelledby="workspace-title">
+        <div class="workspace-toolbar">
+          <div class="tab-list" role="tablist" aria-label="Workspace">
+            <button
+              type="button"
+              id="preview-tab"
+              class="tab-button"
+              role="tab"
+              aria-controls="preview-panel"
+              aria-selected="true"
+              data-view-tab="preview"
+            >
+              <svg {...iconAttrs}>
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <span data-i18n="preview">Preview</span>
+            </button>
+            <button
+              type="button"
+              id="code-tab"
+              class="tab-button"
+              role="tab"
+              aria-controls="code-panel"
+              aria-selected="false"
+              data-view-tab="code"
+            >
+              <svg {...iconAttrs}>
+                <path d="m10 16 4-8"></path>
+                <path d="m6 8-4 4 4 4"></path>
+                <path d="m18 8 4 4-4 4"></path>
+              </svg>
+              <span data-i18n="code">Code</span>
+            </button>
           </div>
-          <div class="preview-actions">
-            <button type="button" class="ghost-button" data-action="press">
-              <span data-i18n="press">Press</span>
-            </button>
-            <button type="button" class="ghost-button" data-action="export-png">
-              PNG
-            </button>
+          <h2 id="workspace-title" class="visually-hidden">Workspace</h2>
+          <div class="workspace-actions">
+            <div class="preview-actions" data-view-actions="preview">
+              <button type="button" class="ghost-button" data-action="press">
+                <svg {...iconAttrs}>
+                  <path d="M6 4v16l14-8-14-8z"></path>
+                </svg>
+                <span data-i18n="press">Play</span>
+              </button>
+              <div class="export-menu">
+                <button
+                  type="button"
+                  class="primary-button"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="export-options"
+                  data-export-toggle
+                >
+                  <svg {...iconAttrs}>
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14 21 3"></path>
+                    <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
+                  </svg>
+                  <span data-i18n="export">Export</span>
+                </button>
+                <div id="export-options" class="menu-options export-options" role="menu" hidden>
+                  <button type="button" role="menuitem" data-action="export-png">
+                    PNG
+                  </button>
+                  <button type="button" role="menuitem" data-action="export-svg">
+                    SVG
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="preview-actions" data-view-actions="code" hidden>
+              <button type="button" class="ghost-button" data-action="copy-html">
+                <span data-copy-label data-i18n="copyEmbed">Copy embed</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        <div class="preview-stage">
+        <div
+          id="preview-panel"
+          class="tab-panel preview-stage"
+          role="tabpanel"
+          aria-labelledby="preview-tab"
+          data-view-panel="preview"
+        >
           <stampy-mark
             id="studio-stamp"
             main-text="Visited"
             sub-text="Stampy"
             date-text="2026.06.27"
             ink="#b93632"
+            ink-opacity="1"
             paper="#fffaf4"
+            rotate="-6"
           ></stampy-mark>
+        </div>
+        <div
+          id="code-panel"
+          class="tab-panel code-stage"
+          role="tabpanel"
+          aria-labelledby="code-tab"
+          data-view-panel="code"
+          hidden
+        >
+          <pre tabindex="0"><code data-embed-code></code></pre>
         </div>
       </section>
 
-      <section class="tool-panel" aria-labelledby="animation-title">
-        <h2 id="animation-title" data-i18n="animation">Animation</h2>
+      <section class="tool-panel" aria-labelledby="anime-sound-title">
+        <h2 id="anime-sound-title" data-i18n="animeSound">Animation & Sound</h2>
         <form class="control-grid" data-animation-form>
           <label for="preset">
             <span data-i18n="preset">Preset</span>
@@ -229,10 +380,21 @@ const customAnimatorExample = `await pressStamp(stamp, {
               <option value="none" data-i18n="none">None</option>
             </select>
           </label>
-          <label class="range-control" for="duration-ms">
+          <label class="range-control" for="duration-ms" data-animation-detail>
             <span class="range-head">
               <span data-i18n="duration">Duration</span>
-              <output for="duration-ms" data-range-output="durationMs">780ms</output>
+              <span class="range-value-field">
+                <input
+                  type="number"
+                  min="120"
+                  max="1600"
+                  step="20"
+                  value="780"
+                  aria-label="Duration value"
+                  data-range-number="durationMs"
+                />
+                <span>ms</span>
+              </span>
             </span>
             <input
               id="duration-ms"
@@ -244,10 +406,21 @@ const customAnimatorExample = `await pressStamp(stamp, {
               value="780"
             />
           </label>
-          <label class="range-control" for="intensity">
+          <label class="range-control" for="intensity" data-animation-detail>
             <span class="range-head">
               <span data-i18n="intensity">Intensity</span>
-              <output for="intensity" data-range-output="intensity">1.0x</output>
+              <span class="range-value-field">
+                <input
+                  type="number"
+                  min="0.4"
+                  max="1.8"
+                  step="0.1"
+                  value="1"
+                  aria-label="Intensity value"
+                  data-range-number="intensity"
+                />
+                <span>x</span>
+              </span>
             </span>
             <input
               id="intensity"
@@ -260,20 +433,11 @@ const customAnimatorExample = `await pressStamp(stamp, {
             />
           </label>
         </form>
-        <details>
-          <summary data-i18n="customAnimatorApi">Custom animator API</summary>
-          <pre tabindex="0"><code>{customAnimatorExample}</code></pre>
-        </details>
-      </section>
-
-      <section class="code-panel" aria-labelledby="code-title">
-        <h2 id="code-title" data-i18n="embed">Embed</h2>
-        <pre tabindex="0"><code data-embed-code></code></pre>
-      </section>
-
-      <section class="code-panel project-panel" aria-labelledby="project-title">
-        <h2 id="project-title" data-i18n="projectData">Project data</h2>
-        <pre tabindex="0"><code data-project-code></code></pre>
+        <label class="sound-control" for="press-sound" hidden>
+          <span data-i18n="pressSound">Press sound</span>
+          <span class="sound-placeholder" data-i18n="noSound">None</span>
+          <audio id="press-sound" preload="none" data-press-audio></audio>
+        </label>
       </section>
     </main>
 
