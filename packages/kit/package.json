@@ -1,0 +1,62 @@
+{
+  "name": "@stampy/kit",
+  "version": "0.1.0",
+  "description": "All-in-one Stampy package with the core runtime API and local Studio launcher.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "stampy": "./bin/stampy.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yusaku01/stampy.git",
+    "directory": "packages/kit"
+  },
+  "bugs": {
+    "url": "https://github.com/Yusaku01/stampy/issues"
+  },
+  "homepage": "https://github.com/Yusaku01/stampy#readme",
+  "keywords": [
+    "stamp",
+    "svg",
+    "studio",
+    "cli",
+    "web-components",
+    "local-first"
+  ],
+  "sideEffects": [
+    "./styles.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./styles.css"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "styles.css",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prebuild": "pnpm --filter @stampy/core build",
+    "build": "tsc -p tsconfig.json && cp ../core/src/styles.css styles.css",
+    "precheck": "pnpm --filter @stampy/core build",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "prepack": "pnpm build",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@stampy/core": "workspace:0.1.0",
+    "@stampy/studio": "workspace:0.1.0"
+  },
+  "devDependencies": {
+    "vitest": "4.1.9"
+  }
+}

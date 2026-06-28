@@ -23,10 +23,21 @@ Use this before publishing the first public repository or npm package.
 - [ ] Confirm the npm package name and scope. `npm view @stampy/core` returned
       `E404` on 2026-06-27, which means the package was not publicly readable at
       that time; final availability still depends on npm account/scope access.
+- [ ] Confirm the Studio npm package name and scope. `@stampy/studio` should be
+      published as a CLI-backed local static Studio after `@stampy/core` is
+      published.
+- [ ] Confirm the Kit npm package name and scope. `@stampy/kit` should be
+      published after both `@stampy/core` and `@stampy/studio`.
 - [ ] Confirm npm authentication. `npm whoami` returned `E401 Unauthorized` on
       2026-06-27, so publishing requires npm login before the first release.
 - [x] Update `packages/core/package.json` from `0.0.0` to the intended release
       version. First release version: `0.1.0`.
+- [x] Prepare `packages/studio/package.json` for npm distribution with a
+      `stampy-studio` bin, static `dist` files, package metadata, and
+      `@stampy/core@0.1.0` as its runtime dependency.
+- [x] Prepare `packages/kit/package.json` for npm distribution with core API
+      re-exports, a `stampy` bin that launches Studio, and dependencies on
+      `@stampy/core@0.1.0` and `@stampy/studio@0.1.0`.
 - [x] Run `pnpm test`.
 - [x] Run `pnpm check`.
 - [x] Run `pnpm build`.
@@ -38,6 +49,14 @@ Use this before publishing the first public repository or npm package.
 - [x] Run `pnpm release:core:check`.
       This wraps tests, type checks, builds, package packing, and external
       consumer verification as a single release gate.
+- [x] Run `pnpm release:studio:check`.
+      This wraps Studio tests, type checks, static build, package packing, CLI
+      smoke testing, and external consumer verification against the packed
+      tarball.
+- [x] Run `pnpm release:kit:check`.
+      This wraps Kit tests, type checks, package packing, runtime API
+      verification, CSS file verification, and Studio launcher verification
+      from an external consumer project.
 - [x] Inspect `tmp/stampy-core-*.tgz`.
       The generated tarball contained `dist`, `README.md`, `LICENSE`, and
       `package.json`, without test files.

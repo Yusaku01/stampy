@@ -1,0 +1,53 @@
+{
+  "name": "@stampy/studio",
+  "version": "0.1.0",
+  "description": "Local GUI for designing Stampy stamp artwork and exporting SVG, PNG, Project JSON, and embed snippets.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "stampy-studio": "./bin/stampy-studio.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yusaku01/stampy.git",
+    "directory": "packages/studio"
+  },
+  "bugs": {
+    "url": "https://github.com/Yusaku01/stampy/issues"
+  },
+  "homepage": "https://github.com/Yusaku01/stampy#readme",
+  "keywords": [
+    "stamp",
+    "svg",
+    "studio",
+    "cli",
+    "local-first",
+    "static-site"
+  ],
+  "files": [
+    "bin",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "pack": "pnpm build",
+    "precheck": "pnpm --filter @stampy/core build",
+    "check": "astro check && tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@stampy/core": "workspace:0.1.0",
+    "astro": "7.0.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.4",
+    "typescript": "5.9.3",
+    "vitest": "4.1.9"
+  }
+}

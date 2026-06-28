@@ -3,8 +3,9 @@
 Stampy is a lightweight toolkit for making SVG stamp marks, press animations,
 and local stamp-book state for static sites and small web apps.
 
-The project is split into two parts:
+The project is split into three packages:
 
+- `@stampy/kit`: all-in-one package with the runtime API and local Studio launcher.
 - `@stampy/core`: dependency-free TypeScript helpers and Web Components.
 - `@stampy/studio`: a localhost Astro Studio for editing, previewing, and exporting stamps.
 
@@ -16,6 +17,51 @@ The project is split into two parts:
 - Export SVG, PNG, and reusable project JSON from a local Studio.
 
 ## Quick Start
+
+Install the all-in-one package:
+
+```sh
+npm install @stampy/kit
+```
+
+Use the runtime API:
+
+```ts
+import { renderStampSvg } from "@stampy/kit";
+import "@stampy/kit/styles.css";
+```
+
+Launch the local Studio:
+
+```sh
+npx stampy
+```
+
+Launch the local Studio without cloning this repository:
+
+```sh
+npx @stampy/studio
+```
+
+Or keep Studio as a project dev tool:
+
+```sh
+npm install -D @stampy/studio
+npx stampy-studio
+```
+
+```sh
+pnpm add -D @stampy/studio
+pnpm exec stampy-studio
+```
+
+Use the runtime package in an app:
+
+```sh
+npm install @stampy/core
+```
+
+Work on this repository locally:
 
 ```sh
 pnpm install

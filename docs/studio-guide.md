@@ -6,6 +6,33 @@ no account, cloud sync, or remote storage is required.
 
 ## Start Studio
 
+Use the npm package:
+
+```sh
+npx @stampy/studio
+```
+
+If your project already uses the all-in-one kit:
+
+```sh
+npm install @stampy/kit
+npx stampy
+```
+
+Or add Studio to your project as a dev tool:
+
+```sh
+npm install -D @stampy/studio
+npx stampy-studio
+```
+
+```sh
+pnpm add -D @stampy/studio
+pnpm exec stampy-studio
+```
+
+Or start it from this repository:
+
 ```sh
 pnpm install
 pnpm dev

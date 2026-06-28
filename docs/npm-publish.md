@@ -1,6 +1,7 @@
 # npm Publish Guide
 
-Use this guide when publishing `@stampy/core` for the first time.
+Use this guide when publishing `@stampy/core`, `@stampy/studio`, and
+`@stampy/kit` for the first time.
 
 Publishing is intentionally not automated yet because the first npm publish
 claims the package name and cannot be treated like a normal reversible commit.
@@ -9,14 +10,17 @@ claims the package name and cannot be treated like a normal reversible commit.
 
 - The repository is public: `https://github.com/Yusaku01/stampy`.
 - The default branch CI is green.
-- `@stampy/core` has `publishConfig.access` set to `public`.
-- The npm package name is still available or publishable by the active npm
+- `@stampy/core`, `@stampy/studio`, and `@stampy/kit` have
+  `publishConfig.access` set to `public`.
+- The npm package names are still available or publishable by the active npm
   account.
 
 Check the package name:
 
 ```sh
 npm view @stampy/core version
+npm view @stampy/studio version
+npm view @stampy/kit version
 ```
 
 An `E404` result means the package is not publicly readable. It may still
@@ -38,7 +42,7 @@ to npm before continuing.
 
    For example, `0.1.0` is a reasonable first public pre-1.0 release.
 
-2. Update `packages/core/package.json`.
+2. Update package versions.
 
    ```json
    {
@@ -50,6 +54,8 @@ to npm before continuing.
 
    ```sh
    pnpm release:core:check
+   pnpm release:studio:check
+   pnpm release:kit:check
    ```
 
    This runs tests, type checks, builds, package packing, and an external
@@ -74,6 +80,8 @@ Only publish after the version and npm account have been approved.
 
 ```sh
 pnpm --filter @stampy/core publish --access public
+pnpm --filter @stampy/studio publish --access public
+pnpm --filter @stampy/kit publish --access public
 ```
 
 If using npm provenance from GitHub Actions later, move publishing into a
@@ -85,6 +93,8 @@ dedicated release workflow instead of publishing manually from a local machine.
 
    ```sh
    npm view @stampy/core version
+   npm view @stampy/studio version
+   npm view @stampy/kit version
    ```
 
 2. Update the root README install section if it still says "After the first npm
@@ -94,7 +104,9 @@ dedicated release workflow instead of publishing manually from a local machine.
 
    ```sh
    git tag @stampy/core@0.1.0
-   git push origin @stampy/core@0.1.0
+   git tag @stampy/studio@0.1.0
+   git tag @stampy/kit@0.1.0
+   git push origin @stampy/core@0.1.0 @stampy/studio@0.1.0 @stampy/kit@0.1.0
    ```
 
 4. Update `docs/release-checklist.md` with the published version and npm URL.

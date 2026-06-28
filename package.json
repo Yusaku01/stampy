@@ -16,8 +16,15 @@
     "check": "pnpm -r check",
     "test": "pnpm -r test",
     "pack:core": "pnpm --filter @stampy/core pack --pack-destination ./tmp",
+    "pack:studio": "pnpm --filter @stampy/studio pack --pack-destination ./tmp",
+    "pack:kit": "pnpm --filter @stampy/kit pack --pack-destination ./tmp",
     "verify:core-consumer": "node scripts/verify-core-consumer.mjs",
-    "release:core:check": "pnpm test && pnpm check && pnpm build && rm -rf tmp && mkdir -p tmp && pnpm pack:core && pnpm verify:core-consumer"
+    "verify:studio-cli": "node scripts/verify-studio-cli.mjs",
+    "verify:studio-consumer": "node scripts/verify-studio-consumer.mjs",
+    "verify:kit-consumer": "node scripts/verify-kit-consumer.mjs",
+    "release:core:check": "pnpm test && pnpm check && pnpm build && rm -rf tmp && mkdir -p tmp && pnpm pack:core && pnpm verify:core-consumer",
+    "release:studio:check": "pnpm --filter @stampy/studio test && pnpm --filter @stampy/studio check && pnpm --filter @stampy/studio build && rm -rf tmp && mkdir -p tmp && pnpm pack:core && pnpm pack:studio && pnpm verify:studio-cli && pnpm verify:studio-consumer",
+    "release:kit:check": "pnpm --filter @stampy/kit test && pnpm --filter @stampy/kit check && pnpm --filter @stampy/kit build && rm -rf tmp && mkdir -p tmp && pnpm pack:core && pnpm pack:studio && pnpm pack:kit && pnpm verify:kit-consumer"
   },
   "devDependencies": {
     "typescript": "5.9.3",

@@ -9,7 +9,7 @@ pnpm install
 pnpm dev
 ```
 
-The Studio runs from `apps/studio`. The embeddable runtime lives in
+The Studio runs from `packages/studio`. The embeddable runtime lives in
 `packages/core`.
 
 ## Validation
@@ -26,7 +26,7 @@ pnpm pack:core
 ## Development Principles
 
 - Keep `@stampy/core` framework-agnostic and dependency-light.
-- Put authoring UI in `apps/studio`; put reusable rendering/data/motion logic in
+- Put authoring UI in `packages/studio`; put reusable rendering/data/motion logic in
   `packages/core`.
 - Treat the Stampy Project JSON schema as a public contract.
 - Prefer small, composable APIs over app-specific shortcuts.

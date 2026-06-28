@@ -1,0 +1,12 @@
+.stampy-mark {
+  display: inline-block;
+  inline-size: var(--stampy-size, 160px);
+  aspect-ratio: 1;
+  color: var(--stampy-ink, #b93632);
+}
+
+.stampy-mark svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}

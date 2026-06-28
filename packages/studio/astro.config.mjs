@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from "astro/config";
 
 const coreEntry = fileURLToPath(
-  new URL("../../packages/core/src/index.ts", import.meta.url),
+  new URL("../core/src/index.ts", import.meta.url),
 );
 
 export default defineConfig({
@@ -18,7 +18,7 @@ export default defineConfig({
     },
     server: {
       fs: {
-        allow: ["../.."],
+        allow: [".."],
       },
     },
   },
